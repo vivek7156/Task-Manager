@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const url = 'http://localhost:5000';
+const url = 'https://task-manager-xnd1.onrender.com';
 
 const useTaskStore = create((set, get) => ({
   tasks: [],

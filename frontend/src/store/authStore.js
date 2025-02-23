@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import toast from 'react-hot-toast';
 
-const url='http://localhost:5000';
+const url='https://task-manager-xnd1.onrender.com';
 
 const useAuthStore = create((set) => ({
   user: null,
