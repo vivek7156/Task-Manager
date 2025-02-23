@@ -6,6 +6,7 @@ import taskRoutes from './routes/task.route.js';
 import userRoutes from './routes/user.route.js';
 import commentRoutes from './routes/comment.route.js';
 import errorHandler from './middlewares/errorhandler.middleware.js';
+import path from 'path';
 
 const app = express();
 
@@ -13,6 +14,12 @@ dotenv.config();
 
 // Connect to MongoDB
 connectDB();
+
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+});
 
 // Middleware
 app.use(cors());
