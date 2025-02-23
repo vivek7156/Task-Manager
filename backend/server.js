@@ -6,28 +6,13 @@ import taskRoutes from './routes/task.route.js';
 import userRoutes from './routes/user.route.js';
 import commentRoutes from './routes/comment.route.js';
 import errorHandler from './middlewares/errorhandler.middleware.js';
-import path from 'path';
 
-const __dirname = path.resolve();
 const app = express();
 
 dotenv.config();
 
 // Connect to MongoDB
 connectDB();
-
-app.use(cors({
-  origin: 'https://task-manager-ten-pearl.vercel.app', // Replace with your frontend URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204
-}));
-
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
-});
 // Middleware
 app.use(cors());
 app.use(express.json());
