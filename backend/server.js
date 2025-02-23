@@ -16,6 +16,13 @@ dotenv.config();
 // Connect to MongoDB
 connectDB();
 
+app.use(cors({
+  origin: 'https://task-manager-ten-pearl.vercel.app', // Replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+}));
+
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
 app.get('*', (req, res) => {
