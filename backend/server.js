@@ -8,6 +8,7 @@ import commentRoutes from './routes/comment.route.js';
 import errorHandler from './middlewares/errorhandler.middleware.js';
 import path from 'path';
 
+const __dirname = path.resolve();
 const app = express();
 
 dotenv.config();
@@ -15,12 +16,11 @@ dotenv.config();
 // Connect to MongoDB
 connectDB();
 
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
 });
-
 // Middleware
 app.use(cors());
 app.use(express.json());
